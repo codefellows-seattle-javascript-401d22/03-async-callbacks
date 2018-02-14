@@ -4,9 +4,9 @@ const fs = require('fs');
 
 const reader = module.exports = function(arr, callback){
     return arr.map(file => {
-        fs.readFile(file, function(err,callback){
+        return fs.readFile(file, function(err, data){
             if(err) return callback(err);
-            return callback(null, data.toString('hex').split(' ').slice(0, 3));
+            return callback(null, data.toString('hex', 0, 2));
         });
     });
 }

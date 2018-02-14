@@ -6,7 +6,7 @@ require('jest');
 describe('Reader Module', function(){
     describe('with an invalid file path', function(){
         it('should return an error', function(){
-            reader(`${__dirname}/doesntexists.pdf`, function(err){    
+            reader([`${__dirname}/doesntexists.pdf`], function(err){    
                 expect(err).toBeTruthy();
                 expect(typeof err).toBe('object');
                 expect(err.code).toBe('ENOENT');
