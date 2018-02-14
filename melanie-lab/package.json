@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest -i --coverage",
     "lint": "eslint"
   },
   "keywords": [],
