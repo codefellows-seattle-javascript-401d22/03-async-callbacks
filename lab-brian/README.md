@@ -1,0 +1,2 @@
+##### Reader Module
+In the lib/ directory, I created a `reader.js` module that exports a single function. The reader module has an airity of exactly 2 including an array with a length of exactly three file paths and a callback function. If inputs are invalid in any way an error will be thrown. If inputs are valid my callback function returns a console.log of an array with the first 8 bytes (in hex) of each file (in order of input 1-3).  Regardless of file size, all three files willd be read and logged in order. 
