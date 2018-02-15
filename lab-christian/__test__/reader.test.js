@@ -22,5 +22,15 @@ describe('#Reader Module', function() {
             ];
             done();
         });
+        it('should have the correct order of hex strings', done => {
+            var expectedResult = ['49206c696b652042', '4920616c736f206c', '526f636b6574204c'];
+            reader(this.paths, function(err, data) {
+                expect(err).toEqual(null);
+                expect(data[0]).toEqual(expectedResult[0]);
+                expect(data[1]).toEqual(expectedResult[1]);
+                expect(data[2]).toEqual(expectedResult[2]);
+                done();
+            });
+        });
     });
 })
