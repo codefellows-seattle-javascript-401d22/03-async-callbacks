@@ -3,6 +3,9 @@
 const fs = require('fs');
 
 const reader = module.exports = function(file, callback) {
+  if(typeof file === 'object' && file.constructor !== Array || typeof file !== 'object' || typeof callback !== 'function') throw new Error('argument data type error');
+  if(arguments.length !== 2) throw new Error('must have exactly 2 arguments');
+  if(file.length !== 3) throw new Error('file length not 3');
   fs.readFile(file[0], function(err, data) {
     let byteArr = [];
     if (err) return callback(err);
