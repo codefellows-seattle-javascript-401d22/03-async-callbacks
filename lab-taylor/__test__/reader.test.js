@@ -1,26 +1,41 @@
-'use srict';
+'use strict';
 
 const reader = require('../lib/reader.js');
 require('jest');
 
-describe('File Reader Module', function() {
-    describe('with an invalid array of paths', function() {
-        it('should throw an error', function(done) {
-            reader([`${__dirname}/not-a-file.txt`,`${__dirname}/not-a-file.txt`,`${__dirname}/not-a-file.txt`], function(err) {
+describe('Read File Module', function() {
+    describe('with improper file paths', function() {
+        it('should return an error', function(done) {
+            reader([`${__dirname}/dont-exist.txt`],function(err) {
                 expect(err).toBeTruthy();
-                expect(typeof err).toBe('object');
-                expect(err.code).toBe('ENOENT');
-                done();
-            });    
-        });
-    });
-    describe('with a proper array of paths', function() {
-        it('should return 8 bytes from each file in paths', function(done) {
-            reader([`${__dirname}/../data/one.txt`,`${__dirname}/../data/two.txt`, `${__dirname}/../data/three.txt`], function(err,data){
-                expect(err).toBe(null);
-                expect(typeof data).toBe('string');
+                expect(err.code).toEqual('ENOENT');
                 done();
             });
+        });
+    });
+    describe('with proper file paths', function() {
+        beforeAll((done) => {
+            this.paths = [
+                `${__dirname}/../data/one.txt`,
+                `${__dirname}/../data/two.txt`,
+                `${__dirname}/../data/three.txt`,
+            ];
+            done();
+        });
+        it('should have the correct order of hex strings', done => {
+            var expectedResult = [ '74686973', '77726974', '49276d20'];
+
+            reader(this.paths, function(err,data) {
+                console.log(data);
+                expect(err).toEqual(null);
+                expect(typeof data[0]).toBe('string');
+                expect(typeof data[1]).toBe('string');
+                expect(typeof data[2]).toBe('string');
+                expect(data[0]).toEqual(expectedResult[0]);
+                expect(data[1]).toEqual(expectedResult[1]);
+                expect(data[2]).toEqual(expectedResult[2]);
+                done();
+            })
         });
     });
 });
