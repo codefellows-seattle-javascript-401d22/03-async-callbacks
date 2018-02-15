@@ -18,7 +18,7 @@ describe('Reader Module', function(){
             reader([`${__dirname}/../data/one.txt`, `${__dirname}/../data/two.txt`, `${__dirname}/../data/three.txt`], function(err, data){
                expect(err).toBe(null);
                expect(Array.isArray(data)).toBeTruthy();
-               expect(data).toEqual([''])    
+               expect(data).toEqual(['4c65', '4f21', '5468'])    
             });
         })
     })
