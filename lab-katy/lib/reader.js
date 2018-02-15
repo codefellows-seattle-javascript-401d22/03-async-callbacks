@@ -23,7 +23,7 @@ const fileReader = module.exports = function(paths, callback) {
                 var result3 = data.toString('hex', 0, 8);
                 console.log(result3);
                 return callback(null, result3);
-            })
+            });
         });
     });
 };
