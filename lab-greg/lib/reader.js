@@ -2,21 +2,23 @@
 
 const fs = require('fs');
 
-let txt1 = `${__dirname}/data/one.txt`;
-let txt2 = `${__dirname}/data/two.txt`;
-let txt3 = `${__dirname}/data/three.txt`;
+module.exports = exports = {};
 
-
-let buff1 = new Buffer(txt1);
-let buff2 = new Buffer(txt2);
-let buff3 = new Buffer(txt3);
-
-let allData = [buff1, buff2, buff3];
-
-const fileReader = module.exports = function(file, callback) {
+exports.fileReader = function(file, callback) {
   fs.readFile(file, function(err, data) {
     if(err) return callback(err);
-    return callback(data).toString();
+    return callback(null, data.toString());
   });
 };
+
+exports.hexConverter = function(file, callback) {
+  var result;
+  fs.readFile(file, function(err, data) {
+    if(err) return callback(err);
+    result = (null, data.toString('hex', 0, 8));
+    console.log(result);
+    return result;
+  });
+};
+
 
