@@ -39,19 +39,21 @@ describe('Reader Module', function() {
   })
 
   describe('with a proper file path', function() {
-    it('should return hex of the first 8 chars in each file', function() {
+    it('should return hex of the first 8 chars in each file', function(done) {
       reader(files, function(err, data) {
         console.log(data);
         expect(err).toBe(null);
         expect(typeof data).toBe('string');
       })
+      done();
     })
 
   })
 
   describe('without a callback provided', function() {
-    it('should return an error', function() {
+    it('should return an error', function(done) {
       expect(reader).toThrow();
+      done();
     }) 
   })
 })
