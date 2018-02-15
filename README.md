@@ -41,4 +41,3 @@ In the lib/ directory, create a `reader.js` module that exports a single functio
 
 ##  Documentation
 In your `README.md` describe the exported values of the module you have defined. Your file reader function description should include it's airty (expected number of parameters), the expected data for each parameter (data-type and limitations), and it's behavior (for both valid and invalid use). Feel free to add any additional information to your `README.md` that seems relavent and useful.
-
