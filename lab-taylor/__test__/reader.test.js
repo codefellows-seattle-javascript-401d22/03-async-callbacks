@@ -6,7 +6,7 @@ require('jest');
 describe('Read File Module', function() {
     describe('with improper file paths', function() {
         it('should return an error', function(done) {
-            reader([`${__dirname}/dont-exist.txt`],function(err) {
+            reader([`${__dirname}/dont-exist.txt`,`${__dirname}/dont-exist.txt`,`${__dirname}/dont-exist.txt`],function(err) {
                 expect(err).toBeTruthy();
                 expect(err.code).toEqual('ENOENT');
                 done();
@@ -23,7 +23,7 @@ describe('Read File Module', function() {
             done();
         });
         it('should have the correct order of hex strings', done => {
-            var expectedResult = [ '74686973', '77726974', '49276d20'];
+            var expectedResult = [ '7468697320697320', '77726974696e6720', '49276d20676f696e'];
 
             reader(this.paths, function(err,data) {
                 console.log(data);
