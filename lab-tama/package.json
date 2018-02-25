@@ -1,0 +1,16 @@
+{
+  "name": "lab-tama",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest -i --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^4.17.0",
+    "jest": "^22.3.0"
+  }
+}
