@@ -20,7 +20,6 @@ describe('Reader Module', function() {
     });
     it('correct array with hex strings', () => {
       var expectedArr = [ '68656c6c', '616c6d6f', '77687920' ];
-      console.log('this,.file', this.file)
       reader(this.file, function(err, data) {
         expect(err).toEqual(null);
         expect(data[0]).toEqual(expectedArr[0]);
